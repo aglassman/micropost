@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}"
+    xml:lang="{% firstof LANGUAGE_CODE 'en' %}"
+    lang="{% firstof LANGUAGE_CODE 'en' %}">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="/static/jquery/css/custom-theme/jquery-ui-1.8.18.custom.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/static/jquery/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/static/jquery/js/jquery-ui-1.8.18.custom.min.js"></script>
+    {% block css %}
+    {% endblock %}
+
+    {% block preload_js %}
+    {% endblock %}
+
+    {% block extra-head %}{% endblock %}
+    <style type="text/css">
+      body {max-width:800px;}
+      #nav {float:left;}
+      #nav li, #user li{display:inline;}
+      #user{float:right;}
+  </style>
+  </head>
+  <body>
+    <h1>Base</h1>
+    {% block content %}{% endblock %}
+    <div>
+    {% include 'bug-report-snippet.html' %}
+    <div id="footer"><div id="report-bug">Report Bug</div></div>
+  </div>
+  </body>
+  <script>
+    $(function() {
+       {% include 'jqueyrsnippet.js' %}
+       {% block jqueryonload %}{% endblock %}
+    });
+  </script>
+</html>

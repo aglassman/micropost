@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h2>Updates</h2>
+	{% if latest_micropost_list %}
+	    <div  id="accordion" class="micropost_container">
+	    	{% autoescape off %}
+	    	{% for micropost in latest_micropost_list %}
+	    		<h3><a href="#">{{micropost.title}}</a></h3>
+	        	<div class="micropost">
+	        		<span class="micropost_byline"></span>
+	        		<p class="micropost_body">{{micropost.text}}</p>        	
+	    		</div>
+	    	{% endfor %}
+	    	{% endautoescape %}
+		</div>
+	{% else %}
+	    <p>No micro posts are available.</p>
+	{% endif %}
+{% endblock %}
+{% block jqueryonload %}
+	$( "#accordion" ).accordion();
+{% endblock %}
+

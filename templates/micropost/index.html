@@ -1,0 +1,9 @@
+{% if latest_micropost_list %}
+    <ul>
+    {% for micropost in latest_micropost_list %}
+        <li><a href="/microb/{{ micropost.id }}/">{{ micropost.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No micro posts are available.</p>
+{% endif %}
